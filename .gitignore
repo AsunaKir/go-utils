@@ -1,0 +1,21 @@
+# 忽略无后缀名的文件，通常是可执行文件
+*
+!*.*
+!*/
+
+# 强制不忽略makefile
+![m|M]akefile
+
+# 忽略一些工程配置或临时文件
+.idea
+*.log
+go.work
+go.work.sum
+*.tgz
+.DS_Store
+**/.DS_Store
+.DS_Store?
+.xac
+.trunk
+.vscode
+.history
