@@ -12,3 +12,5 @@
 + GetFirstAndLastDayOfMonth 获取指定YYYY-MM的第一天和最后一天 eg: 2025-09 --> 2025-09-01,2025-09-30
 + GetFirstAndLastDateTimeOfMonth 获取指定YYYY-MM的第一天0时0分0秒和最后一天23时59分59秒的YYYY-MM-DD HH:mm:ss
 + GetFirstAndLastTimestampOfMonth 获取指定YYYY-MM的第一天0时0分0秒和最后一天23时59分59秒的时间戳
++ GetStartAndEndDateTimeByDate 获取指定YYYY-MM-DD的0时0分0秒和23时59分59秒的YYYY-MM-DD HH:mm:ss eg: 2025-09-01 --> 2025-09-01 00:00:00,2025-09-01 23:59:59
++ GetStartAndEndTimestampByDate 获取指定YYYY-MM-DD的0时0分0秒和23时59分59秒时间戳

@@ -93,11 +93,28 @@ func GetFirstAndLastTimestampOfMonth(yearMonth string) (int64, int64, error) {
 	return firstTime.Unix(), lastTime.Unix(), nil
 }
 
-// 获取指定YYYY-MM-DD的0时0分0秒和23时59分59秒的YYYY-MM-DD HH:mm:ss eg: 2025-09-01 --> 2025-09-01 00:00:00,2025-09-01 23:59:59
-// 获取指定YYYY-MM-DD的0时0分0秒和23时59分59秒时间戳
+// GetStartAndEndDateTimeByDate 获取指定YYYY-MM-DD的0时0分0秒和23时59分59秒的YYYY-MM-DD HH:mm:ss eg: 2025-09-01 --> 2025-09-01 00:00:00,2025-09-01 23:59:59
+func GetStartAndEndDateTimeByDate(date string) (string, string, error) {
+	t, err := time.Parse("2006-01-02", date)
+	if err != nil {
+		return "", "", err
+	}
+	startTime := t.Format("2006-01-02 15:04:05")
+	endTime := t.Add(24 * time.Hour).Add(-1 * time.Second).Format("2006-01-02 15:04:05")
+	return startTime, endTime, nil
+}
+
+// GetStartAndEndTimestampByDate 获取指定YYYY-MM-DD的0时0分0秒和23时59分59秒时间戳
+func GetStartAndEndTimestampByDate(date string) (int64, int64, error) {
+	t, err := time.ParseInLocation("2006-01-02", date, time.Local)
+	if err != nil {
+		return 0, 0, err
+	}
+	startTime := t.Unix()
+	endTime := t.Add(24 * time.Hour).Add(-1 * time.Second).Unix()
+	return startTime, endTime, nil
+}
 
 func main() {
-	fmt.Println(FormatYYYYMMDDReverse("2025-09-01"))
-	fmt.Println(GetFirstAndLastDateTimeOfMonth("2025-11"))
-	fmt.Println(GetFirstAndLastTimestampOfMonth("2025-11"))
+	fmt.Println(GetStartAndEndTimestampByDate("2025-09-01"))
 }
